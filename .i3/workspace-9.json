@@ -1,0 +1,118 @@
+// vim:ts=4:sw=4:et
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 428,
+       "width": 1540,
+       "x": 29,
+       "y": 53
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "user_on",
+            "geometry": {
+               "height": 408,
+               "width": 720,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Ryo Fukui - It Could Happen To You",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^URxvt$",
+                "instance": "^urxvt$"
+                //"title": "^Ryo\\ Fukui\\ \\-\\ It\\ Could\\ Happen\\ To\\ You$",
+                //"transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 350,
+       "width": 350,
+       "x": 1220,
+       "y": 513
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "user_on",
+            "geometry": {
+               "height": 250,
+               "width": 250,
+               "x": 1286,
+               "y": 586
+            },
+            "name": "bum",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^mpv$",
+                "instance": "^gl$"
+                //"title": "^bum$",
+                //"transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 348,
+       "width": 1140,
+       "x": 28,
+       "y": 516
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "user_on",
+            "geometry": {
+               "height": 408,
+               "width": 720,
+               "x": 0,
+               "y": 0
+            },
+            "name": "cava",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^URxvt$",
+                "instance": "^urxvt$"
+                //"title": "^cava$",
+                //"transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

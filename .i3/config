@@ -1,0 +1,309 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Source Sans Pro Regular 8
+set $mod Mod4
+#set $mod Mod1
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up j
+set $down k
+set $left h
+set $right l
+
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec LANG=en_US.UTF-8 dmenu_run
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+n split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+bindsym $mod+t fullscreen toggle global
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+#Print screen with scrot
+#bindsym Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+
+# Screenshot Commands
+bindsym --release Print exec --no-startup-id maim --format png $HOME/Pictures/Screenshots/$(date "+%y-%b-%d_%H%M%S").png
+bindsym --release Shift+Print exec --no-startup-id maim -i $(xdotool getactivewindow) -n --format png $HOME/Pictures/Screenshots/$(date "+%y-%b-%d_%H%M%S").png
+bindsym Ctrl+Print exec --no-startup-id maim -s -n -b 3 -u --format png $HOME/Pictures/Screenshots/$(date '+%y-%b-%d_%H%M%S').png
+
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Control+e exec --no-startup-id "i3-nagbar -t warning -m 'Do you really want to logout?' -b 'Yes' 'i3-msg exit'"
+bindsym $mod+Control+h exec --no-startup-id "i3-nagbar -t warning -m 'Do you really want to hibrenate?' -b 'Yes' 'i3exit hibernate'"
+bindsym $mod+Control+r exec --no-startup-id "i3-nagbar -t warning -m 'Do you really want to reboot?' -b 'Yes' 'i3exit reboot'"
+bindsym $mod+Control+q exec --no-startup-id "i3-nagbar -t warning -m 'Do you really want to shutdown?' -b 'Yes' 'i3exit shutdown'"
+bindsym $mod+Control+s exec --no-startup-id "i3-nagbar -t warning -m 'Do you really want to suspend?' -b 'Yes' 'i3exit suspend'"
+
+
+#Bind FN Keys
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%-
+#bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 20 px or 20 ppt
+        bindsym $down       resize grow height 20 px or 20 ppt
+        bindsym $up         resize shrink height 20 px or 20 ppt
+        bindsym $right      resize grow width 20 px or 20 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 20 px or 20 ppt
+        bindsym Down        resize grow height 20 px or 20 ppt
+        bindsym Up          resize shrink height 20 px or 20 ppt
+        bindsym Right       resize grow width 20 px or 20 ppt
+
+	#Detailed Resizing
+        bindsym Shift+Left        resize shrink width 2 px or 2 ppt
+        bindsym Shift+Down        resize grow height 2 px or 2 ppt
+        bindsym Shift+Up          resize shrink height 2 px or 2 ppt
+        bindsym Shift+Right       resize grow width 2 px or 2 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# alt config for teamviewer
+
+#mode "alt" {
+
+        #set $mod Mod1
+
+        # back to normal: Enter or Escape
+#        bindsym $mod+t mode "default"; exec set $mod Mod4
+#}
+
+#bindsym $mod+t mode "alt"; exec set $mod Mod1
+
+
+#Custom Lock Screen
+bindsym $mod+p exec ~/.i3/lock.sh
+
+#Rofi
+bindsym $mod+g exec rofi -show run -terminal urxvtc -lines 7 -eh 3 -fullscreen -height 100 -padding 300 -opacity 90  -bw 0 -bc "#555555" -bg "#0c1426" -hlbg "#0c1426" -hlfg "#c79595" -fg "#444444" -font "Terminus 15"
+
+
+#Custom Border Size
+new_window pixel 0
+gaps inner 00
+gaps outer 0
+
+#for_window [class="Gnome-terminal"] border pixel 50
+#for_window [class="URxvt"] border pixel 15
+#Clients Color          border  backgr. text    indicator
+client.focused          #285577 #1d1f21 #ffffff #1d1f21
+client.focused_inactive #2B303B #2B303B #888888 #2B303B
+client.unfocused        #2B303B #2B303B #888888 #2B303B
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#	position top
+#        status_command i3status
+#        tray_output primary
+#	i3bar_command i3bar -t
+#}
+
+#Wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+#exec --no-startup-id hsetroot -solid "#2B303B"
+#Init Compton for opacity
+exec --no-startup-id compton
+
+#Autostart Applications
+exec --no-startup-id megasync
+exec --no-startup-id touchegg
+
+#Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# increase by 3%
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 3%+
+
+# decrease by 3%
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 3%-
+
+# mute/unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle 
+#bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+
+# Pulse Audio controls
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+#Clients Color          border  backgr. text    indicator
+#for_window [class="Gnome-terminal"] client.focused          #FFFFFF #ffffff #ffffff #2e9ef4
+#for_window [class="Gnome-terminal"] client.focused_inactive #000000 #ffffff #ffffff #484e50
+#for_window [class="Gnome-terminal"] client.unfocused        #000000 #000000 #888888 #292d2e
+
+# Move focused workspace to monitor
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
+focus_follows_mouse no
+workspace_auto_back_and_forth yes
+
+#Multimonitor setup
+#exec_always --no-startup-id bash 'xrandr --output DVI-D-0 --auto --left-of HDMI-0'
+exec --no-startup-id '/home/robinysh/.i3/startup.sh'
+workspace 1 output HDMI-0
+workspace 2 output HDMI-0
+workspace 3 output HDMI-0
+workspace 4 output HDMI-0
+workspace 5 output HDMI-0
+workspace 6 output DVI-D-0
+workspace 7 output DVI-D-0
+workspace 8 output DVI-D-0
+workspace 9 output DVI-D-0
+workspace 10 output DVI-D-0
+
+
+#Load default layout
+
+#exec --no-startup-id "i3-msg 'workspace 10; append_layout /home/robinysh/.i3/workspace-10.json'"
+#exec --no-startup-id "i3-msg 'workspace 10; append_layout /home/robinysh/.i3/workspace-10.json'"
+exec --no-startup-id '/home/robinysh/.i3/init_workspace.sh'
+exec --no-startup-id "qbittorrent"
+exec --no-startup-id "urxvt -name ncmpcpp -e sh -c 'ncmpcpp'"
+exec --no-startup-id "urxvt -name lyrics -e sh -c 'ncmpcpp -c /home/robinysh/.ncmpcpp/configlyrics -s lyrics'"
+#exec -no-startup-id bash "/home/robinysh/MEGAsync/programming/python/bum/bum/__main__.py >> /home/robinysh/log.txt"
+#exec -no-startup-id bash "/home/robinysh/MEGAsync/programming/python/internet-connect/monitor.py >> /home/robinysh/log.txt"
+exec --no-startup-id "urxvt -name cava -e sh -c 'cava'"
+exec --no-startup-id "urxvt -name tty-clock -e sh -c 'tty-clock -b -C 6 -D'" 
+exec --no-startup-id "i3-msg 'workspace 1"
+exec --no-startup-id "i3-msg 'workspace 9"
